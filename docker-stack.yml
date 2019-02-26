@@ -1,0 +1,39 @@
+version: "3"
+services:
+
+  redis1:
+    image: 127.0.0.1:5000/redis
+    ports:
+      - 16379:6379
+    deploy:
+      replicas: 1
+      update_config:
+        parallelism: 2
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+
+  redis2:
+    image: 127.0.0.1:5000/redis
+    ports:
+      - 16380:6379
+    deploy:
+      replicas: 1
+      update_config:
+        parallelism: 2
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+
+  redis-manager:
+    image: 127.0.0.1:5000/redis
+    ports:
+      - 16381:6379
+    deploy:
+      replicas: 1
+      update_config:
+        parallelism: 2
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+
